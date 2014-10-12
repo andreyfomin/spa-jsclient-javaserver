@@ -1,0 +1,24 @@
+{
+    "name": "main",
+    "version": "0.0.0",
+    "authors": [
+        "andreyfomin <AndreyFomin!(72gh>"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular": "*",
+        "angular-sanitize": "*",
+        "angular-resource": "*",
+        "angular-route": "*",
+        "angular-cookies": "*",
+        "angular-mocks": "*",
+        "bootstrap": "*"
+    }
+}

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ebs</groupId>
+        <artifactId>spa-application</artifactId>
+        <version>2.4-SNAPSHOT</version>
+    </parent>
+
+    <groupId>com.ebs</groupId>
+    <artifactId>spa-client</artifactId>
+    <version>2.4-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <profiles>
+        <profile>
+            <id>profile-windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <!--<plugin>-->
+                        <!--<groupId>org.apache.maven.plugins</groupId>-->
+                        <!--<artifactId>maven-clean-plugin</artifactId>-->
+                        <!--<version>2.4.1</version>-->
+                        <!--<configuration>-->
+                            <!--<filesets>-->
+                                <!--<fileset>-->
+                                    <!--<directory>${basedir}/src/main</directory>-->
+                                    <!--<includes>-->
+                                        <!--<include>**/node_modules/**</include>-->
+                                        <!--<include>**/bower_components/**</include>-->
+                                        <!--&lt;!&ndash;<include>**/META-INF/resources/**</include>&ndash;&gt;-->
+                                    <!--</includes>-->
+                                    <!--<followSymlinks>false</followSymlinks>-->
+                                <!--</fileset>-->
+                            <!--</filesets>-->
+                        <!--</configuration>-->
+                    <!--</plugin>-->
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+
+                        <executions>
+                            <execution>
+                                <id>node packages install</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <workingDirectory>${basedir}/src/main</workingDirectory>
+                                    <executable>cmd</executable>
+                                    <arguments>
+                                        <argument>/X</argument>
+                                        <argument>/C</argument>
+                                        <argument>npm install
+                                        </argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>bower packages install</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <workingDirectory>${basedir}/src/main</workingDirectory>
+                                    <executable>cmd</executable>
+                                    <arguments>
+                                        <argument>/X</argument>
+                                        <argument>/C</argument>
+                                        <argument>${basedir}/src/main/node_modules/.bin/bower install
+                                        </argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>bootstrap font copy</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <workingDirectory>${basedir}/src/main</workingDirectory>
+                                    <executable>cmd</executable>
+                                    <arguments>
+                                        <argument>/X</argument>
+                                        <argument>/C</argument>
+                                        <argument>echo d | xcopy ${basedir}\src\main\bower_components\bootstrap\dist\fonts ${basedir}\src\main\app\assets\fonts /e /c /q /y
+                                        </argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>brunch build</id>
+                                <phase>compile</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <workingDirectory>${basedir}/src/main</workingDirectory>
+                                    <executable>cmd</executable>
+                                    <arguments>
+                                        <argument>/X</argument>
+                                        <argument>/C</argument>
+                                        <argument>${basedir}/src/main/node_modules/.bin/brunch build
+                                        </argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>
