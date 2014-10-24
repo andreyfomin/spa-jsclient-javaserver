@@ -22,7 +22,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public List getPersons() {
-        return this.personDAO.list();
+        return personDAO.list();
     }
 
     @Transactional(readOnly = false)
