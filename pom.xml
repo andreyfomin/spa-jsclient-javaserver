@@ -10,6 +10,7 @@
     <version>2.4-SNAPSHOT</version>
     <description/>
     <modules>
+	<module>db</module>
         <module>client</module>
         <module>server</module>
     </modules>
