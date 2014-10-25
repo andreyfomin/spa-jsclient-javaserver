@@ -34,6 +34,26 @@ angular.module('app.controllers', [])
       return ''
 ])
 
+.controller('PersonTableCtrl', [
+    '$scope'
+    'personService'
+    'messageService'
+    '$log'
+
+    ($scope, personService, messageService, $log) ->
+      personService
+      .findAll()
+      .then(
+        (persons)->
+          $log.log "Got persons"
+          $log.log persons
+        (error)->
+          messageService.error "Error!<br>" + error.config.url
+          $log.log error
+
+      )
+  ])
+
 .controller('MyCtrl1', [
   '$scope'
 

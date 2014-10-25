@@ -19,16 +19,23 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+    <bean id="dataSourceH2Mem" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
         <property name="driverClass" value="org.h2.Driver"/>
         <property name="url" value="jdbc:h2:mem:alm;MODE=Oracle;DB_CLOSE_DELAY=-1"/>
         <property name="username" value="sa"/>
         <property name="password" value="sa"/>
     </bean>
 
+    <bean id="dataSourceH2Embedded" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="org.h2.Driver"/>
+        <property name="url" value="jdbc:h2:~/test"/>
+        <property name="username" value="sa"/>
+        <property name="password" value=""/>
+    </bean>
+
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="dataSource" ref="dataSourceH2Embedded"/>
         <property name="packagesToScan">
             <list>
                 <value>com.spa.model</value>
