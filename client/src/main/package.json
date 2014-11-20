@@ -27,6 +27,11 @@
     "jade-angularjs-brunch": "*",
     "dependency-brunch": "*",
 
+    "express": "*",
+    "cors": "*",
+    "sugar":"*",
+    "body-parser":"*",
+
     "karma": "*",
     "bower": "*"
 }
