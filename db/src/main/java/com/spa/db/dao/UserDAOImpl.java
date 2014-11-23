@@ -7,6 +7,11 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
+
+import static org.springframework.data.mongodb.core.query.Criteria.where;
+import static org.springframework.data.mongodb.core.query.Update.update;
+import static org.springframework.data.mongodb.core.query.Query.query;
+
 import java.util.List;
 
 /**
@@ -40,7 +45,8 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void remove(Query searchUserQuery, User user) {
-        mongoOperation.remove(searchUserQuery, User.class);
+    public void remove(User user) {
+        User usr = mongoOperation.findOne(query(where("username").is(user.getUsername())), User.class);
+        mongoOperation.remove(usr);
     }
 }

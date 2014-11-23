@@ -1,6 +1,5 @@
 package com.spa.db.dao;
 
-import com.spa.model.Person;
 import com.spa.service.User;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,7 +36,7 @@ public class UserDAOImplTest {
     @Test
     public void testSave() throws Exception {
 
-        userDAO.save(user);
+        //userDAO.save(user);
 
     }
 
@@ -58,6 +57,6 @@ public class UserDAOImplTest {
 
     @Test
     public void testRemove() throws Exception {
-
+        userDAO.remove(user);
     }
 }

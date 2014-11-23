@@ -17,5 +17,5 @@ public interface UserDAO {
 
     public void updateFirst(Query searchUserQuery, Update update ,User user);
 
-    public void remove(Query searchUserQuery, User user);
+    public void remove(User user);
 }
