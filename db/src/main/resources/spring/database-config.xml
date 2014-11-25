@@ -25,9 +25,9 @@
 
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
             <property name="driverClassName" value="org.h2.Driver"/>
-            <property name="url" value="jdbc:h2:~/databases/person"/>
+            <property name="url" value="jdbc:h2:~/test"/>
             <property name="username" value="sa"/>
-            <property name="password" value="sa"/>
+            <property name="password" value=""/>
         </bean>
 
         <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -35,7 +35,7 @@
             <property name="packagesToScan" value="com.spa.models"/>
             <property name="jpaVendorAdapter">
                 <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                    <property name="database" value="HSQL"/>
+                    <property name="database" value="H2"/>
                     <property name="generateDdl" value="true"/>
                     <property name="showSql" value="true"/>
                 </bean>
