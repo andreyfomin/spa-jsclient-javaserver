@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -10,10 +10,12 @@
         <version>2.4-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.ebs</groupId>
+    <groupId>com.spa.db</groupId>
     <artifactId>spa-db</artifactId>
     <version>2.4-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <name>spa-db</name>
+    <description>A simple spring data example.</description>
 
     <properties>
 
@@ -26,8 +28,8 @@
         <spring-framework.version>4.1.0.RELEASE</spring-framework.version>
 
         <!-- Hibernate / JPA -->
-         <hibernate.version>4.3.5.Final</hibernate.version>
-        <!--<hibernate.version>3.6.9.Final</hibernate.version>-->
+        <hibernate.version>4.3.5.Final</hibernate.version>
+
 
         <!-- Logging -->
         <logback.version>1.0.13</logback.version>
@@ -66,6 +68,12 @@
             <version>${spring-framework.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>1.7.1.RELEASE</version>
+        </dependency>
+
 
         <!-- Logging with SLF4J & LogBack -->
         <dependency>
@@ -99,12 +107,29 @@
             <version>1.4.182</version>
         </dependency>
 
+        <dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>1.4</version>
+        </dependency>
+
         <!-- Spring data mongodb -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
             <version>1.6.1.RELEASE</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.data</groupId>-->
+            <!--<artifactId>spring-data-commons-core</artifactId>-->
+            <!--<version>1.4.0.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.data</groupId>-->
+            <!--<artifactId>spring-data-commons</artifactId>-->
+            <!--<version>1.5.0.RELEASE</version>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>junit</groupId>
@@ -113,5 +138,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 </project>

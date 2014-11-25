@@ -1,6 +1,6 @@
 package com.spa.rest;
 
-import com.spa.model.Person;
+import com.spa.models.Person;
 import com.spa.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
