@@ -7,11 +7,12 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Calendar;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/database-config.xml"})
-@ActiveProfiles(profiles = "jpa_repository")
+@ActiveProfiles(profiles = "mongo_repository")
 public class PersonRepositoryTest {
 
     @Autowired
@@ -25,6 +26,8 @@ public class PersonRepositoryTest {
         person = new Person();
         person.setFirstName("Andrey");
         person.setLastName("Fomin");
+        person.setEmail("aaa@mail.ru");
+        person.setBirthday(Calendar.getInstance());
     }
 
     @org.junit.Test
