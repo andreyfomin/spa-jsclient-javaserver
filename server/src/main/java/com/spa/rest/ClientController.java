@@ -1,7 +1,7 @@
 package com.spa.rest;
 
-import com.spa.models.Person;
-import com.spa.service.PersonService;
+import com.spa.jpa.models.Customer;
+import com.spa.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,14 +13,15 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/person")
-public class PersonController {
+@RequestMapping("/client")
+public class ClientController {
 
     @Autowired
-    PersonService personService;
+    CustomerService customerService;
 
     @RequestMapping("/list")
-    public List<Person> getPersons() {
-        return personService.getPersons();
+    public List<Customer> getClients() {
+        return customerService.findAllCustomers();
     }
+
 }

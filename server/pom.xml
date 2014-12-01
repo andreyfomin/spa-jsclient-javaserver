@@ -52,12 +52,12 @@
         </dependency>
 
         <dependency>
-            <groupId>com.ebs</groupId>
+            <groupId>com.spa.client</groupId>
             <artifactId>spa-client</artifactId>
             <version>2.4-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.ebs</groupId>
+            <groupId>com.spa.db</groupId>
             <artifactId>spa-db</artifactId>
             <version>2.4-SNAPSHOT</version>
         </dependency>

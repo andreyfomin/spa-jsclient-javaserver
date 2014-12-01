@@ -10,7 +10,7 @@
         <version>2.4-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.ebs</groupId>
+    <groupId>com.spa.client</groupId>
     <artifactId>spa-client</artifactId>
     <version>2.4-SNAPSHOT</version>
     <packaging>jar</packaging>
