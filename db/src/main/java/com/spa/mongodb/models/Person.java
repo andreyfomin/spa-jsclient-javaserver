@@ -1,6 +1,4 @@
-package com.spa.models;
-
-import org.springframework.data.mongodb.core.mapping.Document;
+package com.spa.mongodb.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
