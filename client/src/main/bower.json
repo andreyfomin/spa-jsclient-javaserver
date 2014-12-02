@@ -16,8 +16,7 @@
         "angular": "*",
         "angular-sanitize": "*",
         "angular-resource": "*",
-        "angular-route": "*",
-        "angular-cookies": "*",
+        "angular-ui-router": "*",
         "angular-mocks": "*",
         "bootstrap": "*",
         "datatables": "*"

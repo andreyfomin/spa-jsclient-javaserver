@@ -2,9 +2,8 @@
 
 # Declare app level module which depends on filters, and services
 App = angular.module('app', [
-    'ngCookies'
+    'ui.router'
     'ngResource'
-    'ngRoute'
     'app.controllers'
     'app.directives'
     'app.filters'
@@ -13,19 +12,26 @@ App = angular.module('app', [
 ])
 
 App.config([
-    '$routeProvider'
-    '$locationProvider'
+    '$stateProvider'
+    '$urlRouterProvider'
 
-    ($routeProvider, $locationProvider, config) ->
-        $routeProvider
+    ($stateProvider, $urlRouterProvider, config) ->
 
-        .when('/todo', {templateUrl: 'partials/todo.html'})
-        .when('/view1', {templateUrl: 'partials/partial1.html'})
-        .when('/view2', {templateUrl: 'partials/partial2.html'})
+        # For any unmatched url, redirect to /state1
+        $urlRouterProvider.otherwise("/todo")
 
-        # Catch all
-        .otherwise({redirectTo: '/todo'})
-
-        # Without server side support html5 must be disabled.
-        $locationProvider.html5Mode(false)
+        # Now set up the states
+        $stateProvider
+        .state('todo', {
+          url: '/todo'
+          templateUrl: 'partials/todo.html'
+        })
+        .state('view1', {
+            url: '/view1'
+            templateUrl: 'partials/partial1.html'
+        })
+        .state('view2', {
+            url: '/view2'
+            templateUrl: 'partials/partial2.html'
+        })
 ])

@@ -3,12 +3,15 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/data/jpa
-       http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
        http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx.xsd">
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/data/mongo
+       http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
 
     <beans profile="jpa_repository">
@@ -44,14 +47,14 @@
         <!--<jdbc:embedded-database id="dataSource2" type="H2" />-->
     </beans>
 
-    <!--<beans profile="mongo_repository">-->
-         <!--&lt;!&ndash;Default bean name is 'mongo'&ndash;&gt;-->
-        <!--<mongo:mongo id="mongo" host="localhost" port="27017"/>-->
-        <!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">-->
-            <!--<constructor-arg ref="mongo"/>-->
-            <!--<constructor-arg name="databaseName" value="test"/>-->
-        <!--</bean>-->
-        <!--<mongo:repositories base-package="com.spa.repositories, com.spa.models"/>-->
-    <!--</beans>-->
+    <beans profile="mongo_repository">
+         <!--Default bean name is 'mongo'-->
+        <mongo:mongo id="mongo" host="localhost" port="27017"/>
+        <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+            <constructor-arg ref="mongo"/>
+            <constructor-arg name="databaseName" value="test"/>
+        </bean>
+        <mongo:repositories base-package="com.spa.mongodb.repositories, com.spa.mongodb.models"/>
+    </beans>
 
 </beans>
