@@ -11,7 +11,6 @@ App = angular.module('app', [
     'app.templates'
 ])
 
-
 App.config([
     '$stateProvider'
     '$urlRouterProvider'
