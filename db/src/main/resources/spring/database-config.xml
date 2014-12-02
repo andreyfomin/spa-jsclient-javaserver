@@ -2,16 +2,13 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
-       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/data/jpa
-       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
-       http://www.springframework.org/schema/data/mongo
-       http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
-       http://www.springframework.org/schema/jdbc
-       http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+       http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
     <beans profile="jpa_repository">
@@ -21,6 +18,8 @@
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
             <property name="entityManagerFactory" ref="entityManagerFactory"/>
         </bean>
+
+        <tx:annotation-driven transaction-manager="transactionManager" />
 
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
             <property name="driverClassName" value="org.h2.Driver"/>
@@ -42,17 +41,17 @@
             </property>
         </bean>
 
-        <jdbc:embedded-database id="dataSource2" type="H2" />
+        <!--<jdbc:embedded-database id="dataSource2" type="H2" />-->
     </beans>
 
-    <beans profile="mongo_repository">
-         <!--Default bean name is 'mongo'-->
-        <mongo:mongo id="mongo" host="localhost" port="27017"/>
-        <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-            <constructor-arg ref="mongo"/>
-            <constructor-arg name="databaseName" value="test"/>
-        </bean>
-        <mongo:repositories base-package="com.spa.mongodb.repositories, com.spa.mongodb.models"/>
-    </beans>
+    <!--<beans profile="mongo_repository">-->
+         <!--&lt;!&ndash;Default bean name is 'mongo'&ndash;&gt;-->
+        <!--<mongo:mongo id="mongo" host="localhost" port="27017"/>-->
+        <!--<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">-->
+            <!--<constructor-arg ref="mongo"/>-->
+            <!--<constructor-arg name="databaseName" value="test"/>-->
+        <!--</bean>-->
+        <!--<mongo:repositories base-package="com.spa.repositories, com.spa.models"/>-->
+    <!--</beans>-->
 
 </beans>

@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -19,6 +22,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/database-config.xml"})
 @ActiveProfiles(profiles = "jpa_repository")
+@Transactional
 public class CustomerRepositoryTest {
 
     @Autowired
@@ -47,7 +51,7 @@ public class CustomerRepositoryTest {
     }
 
     @Test
-    public void testFindByEmailAndLastname() throws Exception {
-
+    public void testFindCustomers() throws Exception {
+        List<Customer> customers = (List<Customer>)customerRepository.findAll();
     }
 }

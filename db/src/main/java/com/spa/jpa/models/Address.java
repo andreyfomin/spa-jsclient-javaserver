@@ -41,16 +41,6 @@ public class Address {
 
     }
 
-    /**
-     * Returns a copy of the current {@link Address} instance which is a new entity in terms of persistence.
-     *
-     * @return
-     */
-    public Address getCopy() {
-        return new Address(this.street, this.city, this.country);
-    }
-
-
     public Long getId() {
         return id;
     }
