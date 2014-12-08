@@ -1,7 +1,7 @@
 ul.nav.nav-tabs
-  li(ng-class="getClass('/todo')")
-    a(ng-href='#/todo') todo
-  li(ng-class="getClass('/view1')")
-    a(ng-href='#/view1') view1
-  li(ng-class="getClass('/view2')")
-    a(ng-href='#/view2') view2
+  li.active(role="presentation")
+    a(ui-sref='tables') tables
+  li(role="presentation")
+    a(ui-sref='view1') view1
+  li(role="presentation")
+    a(ui-sref='view2') view2
