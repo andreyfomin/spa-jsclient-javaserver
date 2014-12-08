@@ -23,7 +23,11 @@ App.config([
         $stateProvider
         .state('tables', {
           url: '/tables'
-          templateUrl: 'partials/todo.html'
+          templateUrl: 'partials/tables/tables_container.html'
+        })
+        .state('tables.datatables', {
+                url: '/tables.datatables'
+                templateUrl: 'partials/tables/tables.datatables.html'
         })
         .state('view1', {
             url: '/view1'
