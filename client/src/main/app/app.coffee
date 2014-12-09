@@ -29,6 +29,18 @@ App.config([
                 url: '/tables.datatables'
                 templateUrl: 'partials/tables/tables.datatables.html'
         })
+        .state('tables.jqgrid', {
+              url: '/tables.jqgrid'
+              templateUrl: 'partials/tables/tables.jqgrid.html'
+          })
+        .state('tables.datatables.simple', {
+              url: '/tables.datatables.simple'
+              templateUrl: 'partials/tables/tables.datatables.simple.html'
+          })
+        .state('tables.jqgrid.simple', {
+              url: '/tables.jqgrid.sample'
+              templateUrl: 'partials/tables/tables.jqgrid.simple.html'
+          })
         .state('view1', {
             url: '/view1'
             templateUrl: 'partials/partial1.html'
