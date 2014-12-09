@@ -1,9 +1,9 @@
 .row
     .col-sm-2
         ul.nav.nav-pills.nav-stacked
-            li.active(role="presentation")
+            li(ui-sref-active="active", ng-class="{active: $state.includes('tables.datatables')}")
                 a(ui-sref="tables.datatables") DataTables
-            li(role="presentation")
+            li(ng-class="{active: $state.includes('tables.jqgrid')}")
                 a(ui-sref="tables.jqgrid") jqGrid
-    .col-sm-10(ui-view) AAA
-        ng-include(src="/partials/tables/tables.datatables.html")
+    .col-sm-10(ui-view)
+        ng-include(src="partials/tables/tables.datatables.html")
