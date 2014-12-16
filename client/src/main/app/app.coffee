@@ -9,9 +9,14 @@ App = angular.module('app', [
     'app.filters'
     'app.services'
 ])
+.constant(
+    'RESOURCE_SOURCE'
+    DOMAIN: if querystring.parse(window.location.search.remove(/^[?]/)).domain? then querystring.parse(window.location.search.remove(/^[?]/)).domain else window.location.origin
+    PATHNAME: if querystring.parse(window.location.search.remove(/^[?]/)).pathname? then querystring.parse(window.location.search.remove(/^[?]/)).pathname else window.location.pathname + '../../spring/'
+    DISTRIBUTOR_ID: if querystring.parse(window.location.search.remove(/^[?]/)).distributorId? then querystring.parse(window.location.search.remove(/^[?]/)).distributorId else 0
+)
 
-App
-.run([
+App.run([
     '$rootScope'
     '$state'
     '$stateParams'

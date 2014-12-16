@@ -3,6 +3,7 @@ package com.spa.mongodb.repositories;
 import com.spa.mongodb.models.Person;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/database-config.xml"})
 @ActiveProfiles(profiles = "mongo_repository")
+@Ignore
 public class PersonRepositoryTest {
     @Autowired
     PersonRepository personRepository;

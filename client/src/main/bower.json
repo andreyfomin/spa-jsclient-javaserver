@@ -19,6 +19,8 @@
         "angular-ui-router": "*",
         "angular-mocks": "*",
         "bootstrap": "*",
-        "datatables": "*"
+        "datatables": "*",
+        "querystring":"*",
+        "sugarjs": "*"
     }
 }
