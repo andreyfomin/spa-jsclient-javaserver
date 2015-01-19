@@ -1,7 +1,7 @@
 ul.nav.nav-tabs
-  li.active(role="presentation")
-    a(ui-sref='tables') tables
-  li(role="presentation")
-    a(ui-sref='view1') view1
-  li(role="presentation")
-    a(ui-sref='view2') view2
+  li(ng-class="{active: $state.includes('tables')}")
+    a(ui-sref='tables.datatables') tables
+  li(ng-class="{active: $state.includes('view1')}")
+    a(ui-sref='view1') trees
+  li(ng-class="{active: $state.includes('view2')}")
+    a(ui-sref='view2') graphs
