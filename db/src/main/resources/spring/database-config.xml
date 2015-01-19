@@ -21,7 +21,7 @@
 
         <jpa:repositories base-package="com.spa.jpa.repositories"/>
 
-        <context:property-placeholder location="classpath:config/jdbc.properties" />
+        <context:property-placeholder location="classpath*:config/jdbc.properties" />
 
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
             <property name="entityManagerFactory" ref="entityManagerFactory"/>
@@ -31,7 +31,7 @@
 
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
             <property name="driverClassName" value="org.h2.Driver"/>
-            <property name="url" value="${jdbc.h2.url}"/>
+            <property name="url" value='${jdbc.h2.url}'/>
             <property name="username" value="${jdbc.h2.username}"/>
             <property name="password" value=""/>
         </bean>

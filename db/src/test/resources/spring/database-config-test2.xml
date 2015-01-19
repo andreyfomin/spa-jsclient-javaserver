@@ -20,34 +20,40 @@
 	   http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 
-    <tx:annotation-driven />
-    <context:annotation-config/>
-    <context:component-scan base-package="com.spa.model"/>
+    <beans profile="jpa_h2mem_repository">
+        <tx:annotation-driven/>
+        <context:annotation-config/>
+        <jpa:repositories base-package="com.spa.jpa.repositories"/>
+
+        <bean id="dataSourceH2Mem" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+            <property name="driverClass" value="org.h2.Driver"/>
+            <property name="url" value="jdbc:h2:mem:alm;MODE=Oracle;DB_CLOSE_DELAY=-1"/>
+            <property name="username" value="sa"/>
+            <property name="password" value="sa"/>
+        </bean>
+
+        <jdbc:initialize-database data-source="dataSourceH2Mem" ignore-failures="DROPS">
+            <jdbc:script location="classpath:data/create_customer_table.sql"/>
+        </jdbc:initialize-database>
+
+        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+            <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        </bean>
+
+        <bean id="entityManagerFactory"
+              class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+            <property name="dataSource" ref="dataSourceH2Mem"/>
+            <property name="packagesToScan" value="com.spa.jpa.models"/>
 
 
-    <bean id="dataSourceH2Mem" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-        <property name="driverClass" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:mem:alm;MODE=Oracle;DB_CLOSE_DELAY=-1"/>
-        <property name="username" value="sa"/>
-        <property name="password" value="sa"/>
-    </bean>
+            <property name="jpaVendorAdapter">
+                <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                    <property name="database" value="H2"/>
+                    <property name="generateDdl" value="true"/>
+                    <property name="showSql" value="true"/>
 
-    <jpa:repositories base-package="com.spa.repositories" />
-
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        <property name="entityManagerFactory" ref="entityManagerFactory"/>
-    </bean>
-
-    <bean id="entityManagerFactory"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSourceH2Mem"/>
-        <property name="packagesToScan" value="com.spa.model"/>
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="database" value="H2"/>
-                <property name="generateDdl" value="true"/>
-            </bean>
-        </property>
-    </bean>
-    <jdbc:embedded-database id="dataSource" type="H2"/>
+                </bean>
+            </property>
+        </bean>
+    </beans>
 </beans>

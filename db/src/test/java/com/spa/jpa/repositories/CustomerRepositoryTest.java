@@ -20,8 +20,8 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/database-config.xml"})
-@ActiveProfiles(profiles = "jpa_repository")
+@ContextConfiguration(locations = {"classpath:spring/database-config-test2.xml"})
+@ActiveProfiles(profiles = "jpa_h2mem_repository")
 @Transactional
 public class CustomerRepositoryTest {
 
@@ -35,7 +35,7 @@ public class CustomerRepositoryTest {
 
         customer = new Customer("Andrey", "Fomin");
         customer.setEmailAddress(new EmailAddress("andrey.fomin@mail.ru"));
-        customer.add(new Address("Kaplinsky", "Rishon", "Israel"));
+//        customer.add(new Address("Kaplinsky", "Rishon", "Israel"));
 
     }
 
