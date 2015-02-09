@@ -1,6 +1,5 @@
 package com.spa.jpa.models;
 
-import org.dom4j.tree.AbstractEntity;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
@@ -18,28 +17,28 @@ public class Customer {
     @GeneratedValue
     private Long id;
 
-    private String firstname, lastname;
+    private String firstName, lastName;
 
     @Column(unique = true)
     private EmailAddress emailAddress;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "customer_id")
     private Set<Address> addresses = new HashSet<Address>();
 
     /**
-     * Creates a new {@link Customer} from the given firstname and lastname.
+     * Creates a new {@link Customer} from the given firstName and lastName.
      *
-     * @param firstname must not be {@literal null} or empty.
-     * @param lastname  must not be {@literal null} or empty.
+     * @param firstName must not be {@literal null} or empty.
+     * @param lastName  must not be {@literal null} or empty.
      */
-    public Customer(String firstname, String lastname) {
+    public Customer(String firstName, String lastName) {
 
-        Assert.hasText(firstname);
-        Assert.hasText(lastname);
+        Assert.hasText(firstName);
+        Assert.hasText(lastName);
 
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     protected Customer() {
@@ -67,30 +66,30 @@ public class Customer {
     }
 
     /**
-     * Returns the firstname of the {@link Customer}.
+     * Returns the firstName of the {@link Customer}.
      *
      * @return
      */
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
     /**
-     * Returns the lastname of the {@link Customer}.
+     * Returns the lastName of the {@link Customer}.
      *
      * @return
      */
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     /**
-     * Sets the lastname of the {@link Customer}.
+     * Sets the lastName of the {@link Customer}.
      *
-     * @param lastname
+     * @param lastName
      */
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     /**

@@ -4,6 +4,9 @@
 App = angular.module('app', [
     'ui.router'
     'ngResource'
+    'app.customers.controllers'
+    'app.customers.services'
+    'app.customers.directives'
     'app.controllers'
     'app.directives'
     'app.filters'
@@ -12,9 +15,7 @@ App = angular.module('app', [
 .constant(
     'RESOURCE_SOURCE'
     DOMAIN: if querystring.parse(window.location.search.remove(/^[?]/)).domain? then querystring.parse(window.location.search.remove(/^[?]/)).domain else window.location.origin
-    PATHNAME: if querystring.parse(window.location.search.remove(/^[?]/)).pathname? then querystring.parse(window.location.search.remove(/^[?]/)).pathname else window.location.pathname + '../../spring/'
-    DISTRIBUTOR_ID: if querystring.parse(window.location.search.remove(/^[?]/)).distributorId? then querystring.parse(window.location.search.remove(/^[?]/)).distributorId else 0
-)
+    PATHNAME: if querystring.parse(window.location.search.remove(/^[?]/)).pathname? then querystring.parse(window.location.search.remove(/^[?]/)).pathname else window.location.pathname + '../../rest/')
 
 App.run([
     '$rootScope'
@@ -39,36 +40,21 @@ App.run([
     ($stateProvider, $urlRouterProvider) ->
 
         # For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise("/tables/tables.datatables")
+        $urlRouterProvider.otherwise("/customers")
 
         # Now set up the states
         $stateProvider
-        .state('tables', {
-          url: '/tables'
-          templateUrl: 'partials/tables/tables_container.html'
+        .state('customers', {
+          url: '/customers'
+          templateUrl: 'partials/customers/customers_container.html'
         })
-        .state('tables.datatables', {
-                url: '/tables.datatables'
-                templateUrl: 'partials/tables/tables.datatables.html'
+        .state('tree', {
+                url: '/tree'
+                templateUrl: 'partials/tree/tree_container.html'
         })
-        .state('tables.jqgrid', {
-              url: '/tables.jqgrid'
-              templateUrl: 'partials/tables/tables.jqgrid.html'
-          })
-        .state('tables.datatables.simple', {
-              url: '/tables.datatables.simple'
-              templateUrl: 'partials/tables/tables.datatables.simple.html'
-          })
-        .state('tables.jqgrid.simple', {
-              url: '/tables.jqgrid.sample'
-              templateUrl: 'partials/tables/tables.jqgrid.simple.html'
-          })
-        .state('view1', {
-            url: '/view1'
-            templateUrl: 'partials/partial1.html'
-        })
-        .state('view2', {
-            url: '/view2'
-            templateUrl: 'partials/partial2.html'
-        })
+        .state('graph', {
+                url: '/graph'
+                templateUrl: 'partials/graph/graph_container.html'
+            })
+
 ])

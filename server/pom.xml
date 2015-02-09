@@ -3,52 +3,49 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.ebs</groupId>
+        <groupId>com.spa</groupId>
         <artifactId>spa-application</artifactId>
         <version>2.4-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.ebs.price-optimizer</groupId>
-    <artifactId>spa-server</artifactId>
+    <groupId>com.spa.server</groupId>
+    <artifactId>spa-web-server</artifactId>
     <version>2.4-SNAPSHOT</version>
     <packaging>war</packaging>
+    <name>spa-web-server</name>
 
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>4.1.2.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>4.1.0.RELEASE</version>
         </dependency>
+        
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.1.0.RELEASE</version>
         </dependency>
+        
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.4.2</version>
         </dependency>
+        
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.4.2</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.4.2</version>
         </dependency>
         <!--<dependency>-->
             <!--<groupId>com.fasterxml.jackson.datatype</groupId>-->
@@ -56,26 +53,25 @@
             <!--<version>2.4.4</version>-->
         <!--</dependency>-->
 
-
         <dependency>
             <groupId>com.spa.client</groupId>
             <artifactId>spa-client</artifactId>
             <version>2.4-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>com.spa.db</groupId>
-            <artifactId>spa-db</artifactId>
+            <groupId>com.spa.services</groupId>
+            <artifactId>spa-services</artifactId>
             <version>2.4-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
         </dependency>
+        
     </dependencies>
     <build>
-        <finalName>spa-server</finalName>
+        <finalName>spa-web-server</finalName>
     </build>
 
 </project>

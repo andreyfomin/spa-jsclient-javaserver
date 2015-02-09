@@ -1,8 +1,6 @@
 package com.spa.jpa.models;
 
-import org.dom4j.tree.AbstractEntity;
 import org.springframework.util.Assert;
-
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.util.regex.Pattern;

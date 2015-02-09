@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.ebs</groupId>
+        <groupId>com.spa</groupId>
         <artifactId>spa-application</artifactId>
         <version>2.4-SNAPSHOT</version>
     </parent>
@@ -17,61 +17,36 @@
     <name>spa-db</name>
     <description>A simple spring data example.</description>
 
-    <properties>
-
-        <!-- Generic properties -->
-        <!--<java.version>1.6</java.version>-->
-        <!--<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
-        <!--<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>-->
-
-        <!-- Spring -->
-        <spring-framework.version>4.1.2.RELEASE</spring-framework.version>
-
-        <!-- Hibernate / JPA -->
-        <hibernate.version>4.3.5.Final</hibernate.version>
-
-
-        <!-- Logging -->
-        <logback.version>1.0.13</logback.version>
-        <slf4j.version>1.7.5</slf4j.version>
-
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>${spring-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
-            <version>${spring-framework.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-tx</artifactId>
-            <version>${spring-framework.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>${spring-framework.version}</version>
         </dependency>
 
         <!-- Spring ORM support -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>${spring-framework.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>1.5.3.RELEASE</version>
         </dependency>
 
 
@@ -79,13 +54,11 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>${logback.version}</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -93,44 +66,36 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.182</version>
         </dependency>
 
         <dependency>
             <groupId>commons-dbcp</groupId>
             <artifactId>commons-dbcp</artifactId>
-            <version>1.4</version>
         </dependency>
 
         <!-- Spring data mongodb -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
-            <version>1.4.1.RELEASE</version>
         </dependency>
         <!--  Spring Data commons -->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
-            <version>1.7.3.RELEASE</version>
         </dependency>
-
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

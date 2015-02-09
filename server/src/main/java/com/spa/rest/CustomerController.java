@@ -4,10 +4,8 @@ import com.spa.jpa.models.Customer;
 import com.spa.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,8 +23,15 @@ public class CustomerController {
 
     @RequestMapping(value = "/list", method= RequestMethod.GET)
     public @ResponseBody
-    List<Customer> getClients() {
+    List<Customer> getCustomers() {
         return customerService.findAllCustomers();
+    }
+
+    @RequestMapping(value= "/add", method = RequestMethod.POST)
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody 
+    Customer updateCustomer(@RequestBody Customer customer){
+        return (Customer) customerService.insertCustomer(customer);
     }
 
 }

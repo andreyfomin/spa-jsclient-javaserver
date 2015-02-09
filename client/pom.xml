@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.ebs</groupId>
+        <groupId>com.spa</groupId>
         <artifactId>spa-application</artifactId>
         <version>2.4-SNAPSHOT</version>
     </parent>
@@ -24,49 +24,24 @@
             </activation>
             <build>
                 <plugins>
-                    <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-clean-plugin</artifactId>-->
-                        <!--<version>2.4.1</version>-->
-                        <!--<executions>-->
-                            <!--<execution>-->
-                                <!--<id>auto-clean</id>-->
-                                <!--<phase>initialize</phase>-->
-                                <!--<goals>-->
-                                    <!--<goal>clean</goal>-->
-                                <!--</goals>-->
-                            <!--</execution>-->
-                        <!--</executions>-->
-                        <!--<configuration>-->
-                            <!--<filesets>-->
-                                <!--<fileset>-->
-                                    <!--<directory>${basedir}/src/main</directory>-->
-                                    <!--<includes>-->
-                                        <!--&lt;!&ndash;<include>**/node_modules/**</include>&ndash;&gt;-->
-                                        <!--&lt;!&ndash;<include>**/bower_components/**</include>&ndash;&gt;-->
-                                        <!--<include>**/META-INF/resources/webjars/**</include>-->
-                                    <!--</includes>-->
-                                    <!--<followSymlinks>false</followSymlinks>-->
-                                <!--</fileset>-->
-                            <!--</filesets>-->
-                        <!--</configuration>-->
-                    <!--</plugin>-->
-                    <!--<plugin>-->
-                        <!--<groupId>org.apache.maven.plugins</groupId>-->
-                        <!--<artifactId>maven-jar-plugin</artifactId>-->
-                        <!--<configuration>-->
-                            <!--&lt;!&ndash; include non-java src files in the same place in the output jar &ndash;&gt;-->
-                            <!--<resources>-->
-                                <!--<resource>-->
-                                    <!--<directory>${basedir}/src/main/resources</directory>-->
-                                    <!--<includes>-->
-                                        <!--<include>**/*</include>-->
-                                    <!--</includes>-->
-                                    <!--<filtering>true</filtering>-->
-                                <!--</resource>-->
-                            <!--</resources>-->
-                        <!--</configuration>-->
-                    <!--</plugin>-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-clean-plugin</artifactId>
+                        <version>2.5</version>
+                        <configuration>
+                            <filesets>
+                                <fileset>
+                                    <directory>${basedir}/src/main</directory>
+                                    <includes>
+                                        <!--<include>**/node_modules/**</include>-->
+                                        <!--<include>**/bower_components/**</include>-->
+                                        <include>**/resources/**</include>
+                                    </includes>
+                                    <followSymlinks>false</followSymlinks>
+                                </fileset>
+                            </filesets>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>exec-maven-plugin</artifactId>
@@ -75,7 +50,7 @@
                         <executions>
                             <execution>
                                 <id>node packages install</id>
-                                <phase>compile</phase>
+                                <phase>validate</phase>
                                 <goals>
                                     <goal>exec</goal>
                                 </goals>
@@ -92,7 +67,7 @@
                             </execution>
                             <execution>
                                 <id>bower packages install</id>
-                                <phase>compile</phase>
+                                <phase>validate</phase>
                                 <goals>
                                     <goal>exec</goal>
                                 </goals>
@@ -109,7 +84,7 @@
                             </execution>
                             <execution>
                                 <id>bootstrap font copy</id>
-                                <phase>compile</phase>
+                                <phase>validate</phase>
                                 <goals>
                                     <goal>exec</goal>
                                 </goals>
@@ -126,7 +101,7 @@
                             </execution>
                             <execution>
                                 <id>brunch build</id>
-                                <phase>compile</phase>
+                                <phase>validate</phase>
                                 <goals>
                                     <goal>exec</goal>
                                 </goals>

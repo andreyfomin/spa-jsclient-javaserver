@@ -28,7 +28,7 @@
     "dependency-brunch": "*",
 
     "express": "*",
-    "cors": "*",
+    "cors": "* ",
     "sugar":"*",
     "body-parser":"*",
 

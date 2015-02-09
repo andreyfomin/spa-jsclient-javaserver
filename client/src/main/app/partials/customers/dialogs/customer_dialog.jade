@@ -1,0 +1,40 @@
+.modal.fade#customerDialog
+    .modal-dialog
+        .modal-content
+            form.form-horizontal#customerForm(
+                ng-submit="createCustomer()"
+                name="customerForm")
+                .modal-header
+                    button.close(
+                        type="button"
+                        data-dismiss="modal"
+                        aria-label="Close")
+                        span(
+                            aria-hidden="true") &times;
+                    h4.modal-title Add New Customer
+                .modal-body
+                    .form-group
+                        label.col-sm-3.control-label(for="firstName") First Name:
+                        .col-sm-9
+                            input.form-control#firstName(
+                                type="text"
+                                name="firstName"
+                                placeholder="First Name"
+                                ng-model="customer.firstName"
+                                ng-minlength="5"
+                                ng-required)
+                    .form-group
+                        label.col-sm-3.control-label(for="lastName") Last Name:
+                        .col-sm-9
+                            input.form-control#lastName(
+                                type="text"
+                                name="lastName"
+                                placeholder="Last Name"
+                                ng-model="customer.lastName"
+                                ng-minlength="5"
+                                ng-required)
+                .modal-footer
+                    button.btn.btn-primary(
+                        type="submit"
+                        ng-disabled="customerForm.$invalid || customerForm.firstName.$pristine || customerForm.lastName.$pristine") Add
+                    button.btn.btn-default(type="button", data-dismiss="modal") Close

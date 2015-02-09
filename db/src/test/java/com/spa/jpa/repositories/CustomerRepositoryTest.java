@@ -20,8 +20,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/database-config-test2.xml"})
-@ActiveProfiles(profiles = "jpa_h2mem_repository")
+@ContextConfiguration(locations = {"classpath:spring/database-no-profile-config.xml"})
 @Transactional
 public class CustomerRepositoryTest {
 

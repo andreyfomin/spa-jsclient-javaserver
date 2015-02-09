@@ -1,0 +1,16 @@
+.container-fluid(ng-controller="CustomerController")
+    .row
+        .col-xs-12
+            table.display(
+            customers-grid
+            dataprovider="customers")
+                thead
+                    tr
+                        th First Name
+                        th Last Name
+    .row
+        .col-xs-12
+            button.btn.btn-primary(type="button", ng-click="addNewCustomer()") Add Customer
+    .row
+        .col-xs-12
+            div(ng-include="'partials/customers/dialogs/customer_dialog.html'")
