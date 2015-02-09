@@ -29,7 +29,7 @@ angular.module('app.customers.directives', [
                 $scope.customersTable =  $($elem).DataTable(options)
 
                 # watch for any changes to our data, rebuild the DataTable
-                $scope.$watch attrs.dataprovider, (value) ->
+                $scope.$watch attrs.provider, (value) ->
                     messageService.log "Watch customers list!"
                     messageService.log value
                     messageService.log attrs
