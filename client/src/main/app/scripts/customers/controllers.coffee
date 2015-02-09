@@ -23,9 +23,13 @@ angular.module('app.customers.controllers', [])
           (updatedCustomer, status, headers, config)->
             messageService.log "Successfully added New Rule!!!"
             $('#customerDialog').modal('hide')
-            $scope.customers = []
+            $scope.customers.add(updatedCustomer)
+
+            $scope.customersTable.clear()
+            $scope.customersTable.rows.add($scope.customers)
+            $scope.customersTable.draw()
+
             $scope.customer = {}
-            $scope.$apply()
             
         )
 
@@ -33,7 +37,7 @@ angular.module('app.customers.controllers', [])
       .findAll()
       .success(
         (customers, status, headers, config)->
-          messageService.log "Successfully added New Customers!!!"
+          messageService.log "Successfully got Customers!!!"
           $scope.customers = customers
       )
   ])
