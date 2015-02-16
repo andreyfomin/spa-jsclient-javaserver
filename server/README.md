@@ -12,7 +12,8 @@
 [http://localhost:8080/spa.web/rest/customer/list]
 (http://localhost:8080/spa.web/rest/customer/list)
 ## REST Response
-```
+
+```javascript
 [
   {
     "id": 1,
