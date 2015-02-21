@@ -21,6 +21,7 @@
         "bootstrap": "*",
         "datatables": "*",
         "querystring":"*",
-        "sugarjs": "*"
+        "sugarjs": "*",
+        "font-awesome":"*"
     }
 }
