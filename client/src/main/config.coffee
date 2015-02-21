@@ -34,6 +34,11 @@ exports.config =
                 htmlmin: false
         jade_angular:
             modules_folder: 'partials'
+        assetsmanager:
+            copyTo:
+                '/fonts' : ['bower_components/bootstrap/fonts/*', 'bower_components/font-awesome/fonts/*']
+                '/css/imgs' : ['vendor/dhtmlxSuite_v413_std/codebase/imgs/*']
+        minTimeSpanSeconds: 10
 
 # Enable or disable minifying of result js / css files.
 # minify: true

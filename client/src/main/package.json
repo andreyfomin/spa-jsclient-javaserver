@@ -27,6 +27,8 @@
     "jade-angularjs-brunch": "*",
     "dependency-brunch": "*",
 
+    "assetsmanager-brunch": "*",
+
     "express": "*",
     "cors": "* ",
     "sugar":"*",

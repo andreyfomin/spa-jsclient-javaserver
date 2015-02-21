@@ -82,23 +82,23 @@
                                     </arguments>
                                 </configuration>
                             </execution>
-                            <execution>
-                                <id>bootstrap font copy</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                                <configuration>
-                                    <workingDirectory>${basedir}/src/main</workingDirectory>
-                                    <executable>cmd</executable>
-                                    <arguments>
-                                        <argument>/X</argument>
-                                        <argument>/C</argument>
-                                        <argument>echo d | xcopy ${basedir}\src\main\bower_components\bootstrap\dist\fonts ${basedir}\src\main\app\assets\fonts /e /c /q /y
-                                        </argument>
-                                    </arguments>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                                <!--<id>bootstrap font copy</id>-->
+                                <!--<phase>validate</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>exec</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<workingDirectory>${basedir}/src/main</workingDirectory>-->
+                                    <!--<executable>cmd</executable>-->
+                                    <!--<arguments>-->
+                                        <!--<argument>/X</argument>-->
+                                        <!--<argument>/C</argument>-->
+                                        <!--<argument>echo d | xcopy ${basedir}\src\main\bower_components\bootstrap\dist\fonts ${basedir}\src\main\app\assets\fonts /e /c /q /y-->
+                                        <!--</argument>-->
+                                    <!--</arguments>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
                             <execution>
                                 <id>brunch build</id>
                                 <phase>validate</phase>
