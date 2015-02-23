@@ -20,3 +20,19 @@ angular.module('app.services', [])
             log: (message)->
                 $log.log message
     ])
+
+.factory('HttpServiceResponseHandler', [
+        'MessageService'
+        (messageService)->
+            messageService.log "HttpServiceResponseHandler is loaded!"
+
+            errorHandler: (data, status, header, config) ->
+                if (status == 0)
+                    messageService.error "Connection to server refused!"
+                else if (status == 404)
+                    messageService.error 'Resource not found on server!'
+                else
+                    serverError = if data.defaultMessage? then data.defaultMessage else 'Undefined'
+                    messageService.error 'Server error: ' + serverError
+
+    ])
