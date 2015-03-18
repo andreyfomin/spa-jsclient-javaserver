@@ -31,6 +31,7 @@ public class CustomerRepositoryTest {
     Customer customer;
 
     @Before
+    @Rollback(false)
     public void setUp() throws Exception {
 
         customer = new Customer("Andrey", "Fomin");
