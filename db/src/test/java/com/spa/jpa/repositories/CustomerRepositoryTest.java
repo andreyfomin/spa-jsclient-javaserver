@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/database-no-profile-config.xml"})
-@Transactional
+//@Transactional
 public class CustomerRepositoryTest {
 
     @Autowired
