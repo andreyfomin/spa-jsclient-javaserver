@@ -36,10 +36,11 @@ exports.config =
             modules_folder: 'partials'
         assetsmanager:
             copyTo:
-                '/fonts' : ['bower_components/bootstrap/fonts/*', 'bower_components/font-awesome/fonts/*']
+                '/fonts' : ['bower_components/bootstrap/fonts/*']
+                '/fonts' : ['bower_components/font-awesome/fonts/*']
                 '/images' : ['bower_components/datatables/media/images/*']
                 '/css/imgs' : ['vendor/dhtmlxSuite_v413_std/codebase/imgs/*']
-        minTimeSpanSeconds: 10
+            minTimeSpanSeconds: 60
 
 # Enable or disable minifying of result js / css files.
 # minify: true
