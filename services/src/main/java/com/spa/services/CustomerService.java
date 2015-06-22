@@ -1,7 +1,9 @@
 package com.spa.services;
 
 
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+
 import java.util.List;
 
 /**
@@ -9,7 +11,12 @@ import java.util.List;
  */
 public interface CustomerService<C, ID> {
     public C insertCustomer(C customer);
+
     public List<C> findAllCustomers();
+
+    public Page<C> findAllCustomers(PageRequest var1);
+
     public C findCustomerById(ID id);
+
     public void deleteCustomer(C customer);
 }

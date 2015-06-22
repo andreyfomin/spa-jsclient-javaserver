@@ -1,6 +1,8 @@
 ul.nav.nav-tabs
     li(ng-class="{active: $state.includes('customers')}")
         a(ui-sref='customers') Customers
+    li(ng-class="{active: $state.includes('customers_srv_side_tbl')}")
+        a(ui-sref='customers_srv_side_tbl') Customers Server-side processing
     li(ng-class="{active: $state.includes('tree')}")
         a(ui-sref='tree') Trees
     li(ng-class="{active: $state.includes('graph')}")

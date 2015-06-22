@@ -3,7 +3,8 @@ package com.spa.services;
 import com.spa.jpa.models.Customer;
 import com.spa.jpa.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +15,6 @@ import java.util.List;
  * Created by AFomin on 12/1/2014.
  */
 @Service
-@Qualifier("customerServiceJpaImpl")
 @Transactional
 public class CustomerServiceJpaImpl implements CustomerService<Customer, Long> {
 
@@ -22,23 +22,22 @@ public class CustomerServiceJpaImpl implements CustomerService<Customer, Long> {
     private CustomerRepository customerRepository;
 
 
-    @Override
     public Customer insertCustomer(Customer customer) {
         return customerRepository.saveAndFlush(customer);
     }
 
-    @Override
-    @Transactional(readOnly = true)
     public List<Customer> findAllCustomers() {
         return customerRepository.findAll();
     }
 
-    @Override
+    public Page<Customer> findAllCustomers(PageRequest pageable) {
+        return customerRepository.findAll(pageable);
+    }
+
     public void deleteCustomer(Customer customer) {
 
     }
 
-    @Override
     public Customer findCustomerById(Long id) {
         return null;
     }

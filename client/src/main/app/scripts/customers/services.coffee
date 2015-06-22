@@ -18,6 +18,10 @@ angular.module('app.customers.services', [])
                 )
 
 
+            getAjaxURLTblServerProc: ()->
+                RESOURCE_SOURCE.DOMAIN + RESOURCE_SOURCE.PATHNAME + "customer/page/list"
+
+
             addCustomer: (customer)->
                 messageService.log "Call addCustomer of CustomersService"
 

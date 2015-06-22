@@ -48,6 +48,10 @@ App.run([
           url: '/customers'
           templateUrl: 'partials/customers/customers_container.html'
         })
+        .state('customers_srv_side_tbl', {
+                url: '/customers'
+                templateUrl: 'partials/customers/customers_container_srv_side_tbl.html'
+            })
         .state('tree', {
                 url: '/tree'
                 templateUrl: 'partials/tree/tree_container.html'

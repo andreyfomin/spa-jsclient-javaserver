@@ -39,3 +39,44 @@ angular.module('app.customers.directives', [
                         $scope.customersTable.draw()
 
     ])
+
+.directive('customersGridServerSideProc', [
+        'MessageService'
+        'CustomerService'
+        (messageService, customerService) ->
+            restrict: "A"
+            link: ($scope, $elem, attrs) ->
+                options =
+                    serverSide: true
+                    ajax:
+                        url: customerService.getAjaxURLTblServerProc()
+                        type: 'POST'
+                        contentType: "application/json"
+                        data: (data) ->
+                            JSON.stringify(data)
+
+                    scrollY: "266px"
+                    scrollX: true
+                    dom: '<"top">rt<"bottom"p><"clear">'
+                    columns: [
+                        {
+                            data: 'firstName'
+                        }
+                        {
+                            data: 'lastName'
+                        }
+                    ]
+
+                $scope.customersTable =  $($elem).DataTable(options)
+
+                # watch for any changes to our data, rebuild the DataTable
+#                $scope.$watch attrs.provider, (value) ->
+#                    messageService.log "Watch customers list!"
+#                    messageService.log value
+#                    messageService.log attrs
+#                    if value
+#                        $scope.customersTable.clear()
+#                        $scope.customersTable.rows.add(value)
+#                        $scope.customersTable.draw()
+
+    ])
