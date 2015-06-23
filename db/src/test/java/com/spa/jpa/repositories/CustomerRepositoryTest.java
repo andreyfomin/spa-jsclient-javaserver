@@ -1,5 +1,6 @@
 package com.spa.jpa.repositories;
 
+import com.spa.jpa.models.Address;
 import com.spa.jpa.models.Customer;
 import com.spa.jpa.models.EmailAddress;
 import org.junit.Assert;
@@ -34,8 +35,8 @@ public class CustomerRepositoryTest {
     public void setUp() throws Exception {
 
         customer = new Customer("Andrey", "Fomin");
-//        customer.setEmailAddress(new EmailAddress("andrey.fomin@mail.ru"));
-//        customer.add(new Address("Kaplinsky", "Rishon", "Israel"));
+        customer.setEmailAddress(new EmailAddress("andrey.fomin@mail.ru"));
+        customer.getAddresses().add(new Address("Kaplinsky", "Rishon", "Israel"));
 
     }
 

@@ -29,13 +29,16 @@ public class Customer {
     @Setter
     private String lastName;
 
-
+    @Getter
+    @Setter
     @Column(unique = true)
     private EmailAddress emailAddress;
-//
-//    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
-//    @JoinColumn(name = "customer_id")
-//    private Set<Address> addresses = new HashSet<Address>();
+
+    @Getter
+    @Setter
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JoinColumn(name = "customer_id")
+    private Set<Address> addresses = new HashSet<Address>();
 
     /**
      * Creates a new {@link Customer} from the given firstName and lastName.
@@ -55,6 +58,5 @@ public class Customer {
     protected Customer() {
 
     }
-
 
 }

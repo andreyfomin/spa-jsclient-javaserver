@@ -4,11 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by AFomin on 6/22/2015.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SrvSideTableParamReqMessage {
+
 
     /**
      * Draw counter. This is used by DataTables to ensure that the Ajax returns from server-side
@@ -37,6 +41,26 @@ public class SrvSideTableParamReqMessage {
     @Getter
     @Setter
     private Integer length;
+
+    @Getter
+    @Setter
+    private List<Order> order = new ArrayList<Order>();
+
+}
+
+
+class Order {
+    @Getter
+    @Setter
+    private Long column;
+
+    @Getter
+    @Setter
+    private String dir;
+
+
+    public Order() {
+    }
 
 
 }
