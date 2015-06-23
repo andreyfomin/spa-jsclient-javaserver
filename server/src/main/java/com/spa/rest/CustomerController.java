@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,9 +36,16 @@ public class CustomerController {
     public SrvSideTableParamResMessage getServerSideProcessedCustomers(@RequestBody SrvSideTableParamReqMessage reqMessage) {
         SrvSideTableParamResMessage srvSideTableParamResMessage = new SrvSideTableParamResMessage();
 
+        Pageable page = new PageRequest(reqMessage.getStart() / reqMessage.getLength(), reqMessage.getLength());
 
-        final Page<Customer> allCustomers = customerService.findAllCustomers(
-                new PageRequest(reqMessage.getStart() / reqMessage.getLength(), reqMessage.getLength()));
+
+        final Page allCustomers = customerService.findAllCustomers(
+                new PageRequest(
+                        reqMessage.getStart() / reqMessage.getLength(),
+                        reqMessage.getLength(),
+                        reqMessage.getSortingOrder(),
+                        reqMessage.getSortingOrderColName())
+        );
 
         srvSideTableParamResMessage.setData(allCustomers.getContent());
         srvSideTableParamResMessage.setRecordsTotal((int) allCustomers.getTotalElements());

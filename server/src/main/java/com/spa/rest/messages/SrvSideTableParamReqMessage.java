@@ -3,12 +3,16 @@ package com.spa.rest.messages;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by AFomin on 6/22/2015.
+ * <p/>
+ * https://datatables.net/manual/server-side
+ * https://datatables.net/forums/discussion/26699/post-datatable-data-to-server-in-json-format-with-column-names
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SrvSideTableParamReqMessage {
@@ -46,9 +50,21 @@ public class SrvSideTableParamReqMessage {
     @Setter
     private List<Order> order = new ArrayList<Order>();
 
+    @Getter
+    @Setter
+    private List<Column> columns = new ArrayList<Column>();
+
+    public Sort.Direction getSortingOrder() {
+        return ("asc".equals(order.get(0).getDir())) ? Sort.Direction.ASC : Sort.Direction.DESC;
+    }
+
+    public String getSortingOrderColName() {
+        return columns.get(order.get(0).getColumn().intValue()).getData();
+    }
 }
 
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 class Order {
     @Getter
     @Setter
@@ -58,9 +74,39 @@ class Order {
     @Setter
     private String dir;
 
+}
 
-    public Order() {
-    }
+class Column {
 
+    @Getter
+    @Setter
+    private String data;
 
+    @Getter
+    @Setter
+    private String name;
+
+    @Getter
+    @Setter
+    private Boolean searchable;
+
+    @Getter
+    @Setter
+    private Boolean orderable;
+
+    @Getter
+    @Setter
+    private Search search;
+
+}
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+class Search {
+    @Getter
+    @Setter
+    private String value;
+
+    @Getter
+    @Setter
+    private Boolean regex;
 }
