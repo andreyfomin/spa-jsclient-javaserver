@@ -30,6 +30,14 @@ public class CustomerController {
         return customerService.findAllCustomers();
     }
 
+
+    /**
+     *
+     * SELECT * FROM CUSTOMER OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY;
+     *
+     * @param reqMessage
+     * @return
+     */
     @RequestMapping(value = "/page/list", method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public SrvSideTableParamResMessage getServerSideProcessedCustomers(@RequestBody SrvSideTableParamReqMessage reqMessage) {

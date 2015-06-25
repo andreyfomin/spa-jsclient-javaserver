@@ -21,6 +21,7 @@
 
     <context:property-placeholder location="${config:classpath*:config/dev/}jdbc.properties"/>
 
+    <!-- Configure the transaction manager bean -->
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
@@ -31,13 +32,13 @@
         <jdbc:script location="classpath:config/db_data/create_customer_table.sql"/>
     </jdbc:initialize-database>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="${jdbc.driver:org.h2.Driver}"/>
-        <property name="url" value='${jdbc.url:jdbc:h2:mem:alm;MODE=Oracle;DB_CLOSE_DELAY=-1}'/>
-        <property name="username" value="${jdbc.username:sa}"/>
-        <property name="password" value="${jdbc.password}"/>
-        <property name="defaultAutoCommit" value="false"/>
-    </bean>
+    <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">-->
+        <!--<property name="driverClassName" value="${jdbc.driver:org.h2.Driver}"/>-->
+        <!--<property name="url" value='${jdbc.url:jdbc:h2:mem:alm;MODE=Oracle;DB_CLOSE_DELAY=-1}'/>-->
+        <!--<property name="username" value="${jdbc.username:sa}"/>-->
+        <!--<property name="password" value="${jdbc.password}"/>-->
+        <!--<property name="defaultAutoCommit" value="false"/>-->
+    <!--</bean>-->
 
     <bean id="dataSourceSingleConnection" class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
         <property name="driverClassName" value="${jdbc.driver:org.h2.Driver}"/>
@@ -47,15 +48,24 @@
         <property name="suppressClose" value="true"/>
     </bean>
 
+    <!-- Create default configuration for Hibernate -->
+    <bean id="hibernateJpaVendorAdapter"
+          class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <!--<property name="database" value="${jdbc.db.type:H2}"/>-->
+        <!--<property name="generateDdl" value="true"/>-->
+        <!--<property name="showSql" value="true"/>-->
+    </bean>
+
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSourceSingleConnection"/>
         <property name="packagesToScan" value="com.spa.jpa.models"/>
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-                <property name="database" value="${jdbc.db.type:H2}"/>
-                <property name="generateDdl" value="true"/>
-                <property name="showSql" value="true"/>
-            </bean>
+        <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter" />
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.dialect">${hibernate.dialect:org.hibernate.dialect.H2Dialect}</prop>
+                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="show_sql">true</prop>
+            </props>
         </property>
     </bean>
 
