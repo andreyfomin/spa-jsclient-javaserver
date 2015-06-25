@@ -13,6 +13,9 @@
 
     <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
 
+
+    <!--http://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/-->
+
     <security:http use-expressions="true">
         <security:intercept-url pattern="/**" access="authenticated"/>
         <security:logout
