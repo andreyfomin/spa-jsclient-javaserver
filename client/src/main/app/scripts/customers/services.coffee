@@ -12,6 +12,10 @@ angular.module('app.customers.services', [])
                 $http.get(
                     RESOURCE_SOURCE.DOMAIN + RESOURCE_SOURCE.PATHNAME + "customer/list"
                 )
+                .success(
+                    (data, status, header, config) ->
+                        httpServiceResponseHandler.securityHandler(data, status, header, config)
+                )
                 .error(
                     (data, status, header, config) ->
                         httpServiceResponseHandler.errorHandler(data, status, header, config)
@@ -28,6 +32,10 @@ angular.module('app.customers.services', [])
                 $http.post(
                     RESOURCE_SOURCE.DOMAIN + RESOURCE_SOURCE.PATHNAME + "customer/add"
                     customer
+                )
+                .success(
+                    (data, status, header, config) ->
+                        httpServiceResponseHandler.securityHandler(data, status, header, config)
                 )
                 .error(
                     (data, status, header, config) ->

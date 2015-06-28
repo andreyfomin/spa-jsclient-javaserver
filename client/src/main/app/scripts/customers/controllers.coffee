@@ -14,6 +14,11 @@ angular.module('app.customers.controllers', [])
                 $('#customerDialog').modal('show')
                 return
 
+
+            $scope.updateServerSideCustomer = ()->
+                $scope.customersSrvSideTable.draw()
+                return
+
             $scope.createCustomer = ()->
                 messageService.log "Create Customer!"
 

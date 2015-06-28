@@ -67,7 +67,7 @@ angular.module('app.customers.directives', [
                         }
                     ]
 
-                $scope.customersTable =  $($elem).DataTable(options)
+                $scope.customersSrvSideTable =  $($elem).DataTable(options)
 
                 # watch for any changes to our data, rebuild the DataTable
 #                $scope.$watch attrs.provider, (value) ->
