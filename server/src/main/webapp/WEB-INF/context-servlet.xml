@@ -15,7 +15,7 @@
 
 
     <!--http://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/-->
-
+    <!--https://malalanayake.wordpress.com/2014/06/27/spring-security-on-rest-api/-->
     <security:http use-expressions="true">
         <security:intercept-url pattern="/**" access="authenticated"/>
         <security:logout
