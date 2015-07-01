@@ -24,5 +24,6 @@ public class ProfileController {
 //                SecurityContextHolder.getContext().getAuthentication();
 
         return user;
+
     }
 }
