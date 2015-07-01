@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,14 +20,14 @@ import java.util.List;
  */
 
 @RestController
+//@Secured({"ROLE_ADMIN"})
 @RequestMapping("/customer")
-@Secured("ROLE_ADMIN")
 public class CustomerController {
 
     @Autowired
     @Qualifier("customerServiceJpaImpl")
     private CustomerService customerService;
-
+    @PreAuthorize(value="hasRole('ROLE_ADMIN') and hasRole('ROLE_USER')")
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public List<Customer> getCustomers() {
         return customerService.findAllCustomers();
@@ -41,6 +42,7 @@ public class CustomerController {
      * @return
      */
     @RequestMapping(value = "/page/list", method = RequestMethod.POST)
+    @PreAuthorize(value="hasRole('ROLE_USER')")
     @ResponseStatus(HttpStatus.OK)
     public SrvSideTableParamResMessage getServerSideProcessedCustomers(@RequestBody SrvSideTableParamReqMessage reqMessage) {
         SrvSideTableParamResMessage srvSideTableParamResMessage = new SrvSideTableParamResMessage();
@@ -62,6 +64,7 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @PreAuthorize(value="hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     public Customer updateCustomer(@RequestBody Customer customer) {
         return (Customer) customerService.insertCustomer(customer);
