@@ -20,8 +20,8 @@ public class ProfileController {
     //    @PreAuthorize("hasRole('PERMISSION_ADMIN')")
     @RequestMapping("/currentUser")
     public User currentUser(@AuthenticationPrincipal User user) {
-        Authentication authentication =
-                SecurityContextHolder.getContext().getAuthentication();
+//        Authentication authentication =
+//                SecurityContextHolder.getContext().getAuthentication();
         return user;
     }
 }
