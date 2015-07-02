@@ -37,7 +37,6 @@ public class CustomerRepositoryTest {
         customer = new Customer("Andrey", "Fomin");
         customer.setEmailAddress(new EmailAddress("andrey.fomin@mail.ru"));
         customer.getAddresses().add(new Address("Kaplinsky", "Rishon", "Israel"));
-
     }
 
     @Test
