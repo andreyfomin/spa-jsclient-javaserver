@@ -63,7 +63,6 @@ public class SrvSideTableParamReqMessage {
     }
 }
 
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 class Order {
     @Getter
