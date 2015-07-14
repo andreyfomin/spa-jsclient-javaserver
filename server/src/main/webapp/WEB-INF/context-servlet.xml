@@ -11,6 +11,7 @@
     <!--http://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/-->
     <!--https://malalanayake.wordpress.com/2014/06/27/spring-security-on-rest-api/-->
     <security:http use-expressions="true">
+        <security:custom-filter ref="corsHandler" after="PRE_AUTH_FILTER"/>
         <security:intercept-url pattern="/**" access="authenticated"/>
         <security:logout
                 logout-success-url="/login?logout"
@@ -18,14 +19,8 @@
                 />
         <security:form-login />
         <security:csrf disabled="true" />
-
-        <!-- enable remember me -->
-        <!--3 minutes-->
-        <security:remember-me
-                key="spaAppKey"
-                token-validity-seconds="120" />
-
     </security:http>
+
     <security:authentication-manager>
         <security:authentication-provider>
             <security:user-service>
@@ -38,5 +33,7 @@
             </security:user-service>
         </security:authentication-provider>
     </security:authentication-manager>
+
+    <bean id="corsHandler" class="com.filters.CorsFilter" />
 
 </beans>

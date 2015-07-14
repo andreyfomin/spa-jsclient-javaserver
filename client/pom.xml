@@ -48,40 +48,40 @@
                         <version>1.2.1</version>
 
                         <executions>
-                            <execution>
-                                <id>node packages install</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                                <configuration>
-                                    <workingDirectory>${basedir}/src/main</workingDirectory>
-                                    <executable>cmd</executable>
-                                    <arguments>
-                                        <argument>/X</argument>
-                                        <argument>/C</argument>
-                                        <argument>npm install
-                                        </argument>
-                                    </arguments>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>bower packages install</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                                <configuration>
-                                    <workingDirectory>${basedir}/src/main</workingDirectory>
-                                    <executable>cmd</executable>
-                                    <arguments>
-                                        <argument>/X</argument>
-                                        <argument>/C</argument>
-                                        <argument>${basedir}/src/main/node_modules/.bin/bower update
-                                        </argument>
-                                    </arguments>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                                <!--<id>node packages install</id>-->
+                                <!--<phase>validate</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>exec</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<workingDirectory>${basedir}/src/main</workingDirectory>-->
+                                    <!--<executable>cmd</executable>-->
+                                    <!--<arguments>-->
+                                        <!--<argument>/X</argument>-->
+                                        <!--<argument>/C</argument>-->
+                                        <!--<argument>npm install-->
+                                        <!--</argument>-->
+                                    <!--</arguments>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
+                            <!--<execution>-->
+                                <!--<id>bower packages install</id>-->
+                                <!--<phase>validate</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>exec</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<workingDirectory>${basedir}/src/main</workingDirectory>-->
+                                    <!--<executable>cmd</executable>-->
+                                    <!--<arguments>-->
+                                        <!--<argument>/X</argument>-->
+                                        <!--<argument>/C</argument>-->
+                                        <!--<argument>${basedir}/src/main/node_modules/.bin/bower update-->
+                                        <!--</argument>-->
+                                    <!--</arguments>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
                             <!--<execution>-->
                                 <!--<id>bootstrap font copy</id>-->
                                 <!--<phase>validate</phase>-->
@@ -116,23 +116,23 @@
                                     </arguments>
                                 </configuration>
                             </execution>
-                            <execution>
-                                <id>create client packages info file</id>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>exec</goal>
-                                </goals>
-                                <configuration>
-                                    <workingDirectory>${basedir}/src/main</workingDirectory>
-                                    <executable>cmd</executable>
-                                    <arguments>
-                                        <argument>/X</argument>
-                                        <argument>/C</argument>
-                                        <argument>${basedir}/src/main/node_modules/.bin/bower list > ${basedir}/src/main/resources/META-INF/resources/webjars/spa-client/spa_client_js_lib_info.txt
-                                        </argument>
-                                    </arguments>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                                <!--<id>create client packages info file</id>-->
+                                <!--<phase>validate</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>exec</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<workingDirectory>${basedir}/src/main</workingDirectory>-->
+                                    <!--<executable>cmd</executable>-->
+                                    <!--<arguments>-->
+                                        <!--<argument>/X</argument>-->
+                                        <!--<argument>/C</argument>-->
+                                        <!--<argument>${basedir}/src/main/node_modules/.bin/bower list > ${basedir}/src/main/resources/META-INF/resources/webjars/spa-client/spa_client_js_lib_info.txt-->
+                                        <!--</argument>-->
+                                    <!--</arguments>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
 
                         </executions>
                     </plugin>

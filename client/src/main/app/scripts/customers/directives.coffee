@@ -54,6 +54,12 @@ angular.module('app.customers.directives', [
                         contentType: "application/json"
                         data: (data) ->
                             JSON.stringify(data)
+                        dataSrc: (json)->
+                            messageService.log "!!!!! Got data from server"
+                            messageService.log json
+                            $scope.customersPage = json.data
+                            $scope.$digest()
+                            json.data
 
                     scrollY: "266px"
                     scrollX: true

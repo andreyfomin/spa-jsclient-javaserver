@@ -43,6 +43,8 @@ App.run([
 
     ($stateProvider, $urlRouterProvider, $httpProvider) ->
 
+        $httpProvider.defaults.withCredentials = true;
+
         # For any unmatched url, redirect to /state1
         $urlRouterProvider.otherwise("/customers")
         $httpProvider.interceptors.push('spaHttpInterceptor')

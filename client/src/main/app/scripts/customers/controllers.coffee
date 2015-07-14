@@ -8,6 +8,8 @@ angular.module('app.customers.controllers', [])
         ($scope, customerService, messageService) ->
             $scope.customers = []
 
+            $scope.customersPage = []
+
             $scope.customer = {}
 
             $scope.addNewCustomer = ()->
@@ -44,4 +46,10 @@ angular.module('app.customers.controllers', [])
                     messageService.log "Successfully got Customers!!!"
                     $scope.customers = customers
             )
+
+            $scope.$watch 'customersPage', (newValue, oldValue) ->
+                messageService.log "Watch customersPage list!"
+                messageService.log $scope.customersPage
+                messageService.log newValue
+                messageService.log oldValue
     ])
