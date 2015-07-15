@@ -45,3 +45,42 @@ angular.module('app.services', [])
                     debugger
                     messageService.error 'Redirect to login from server!'
     ])
+
+
+.factory('LoginService', [
+            '$http'
+            'MessageService'
+            'RESOURCE_SOURCE'
+            'HttpServiceResponseHandler'
+            ($http, messageService, RESOURCE_SOURCE, httpServiceResponseHandler) ->
+
+                loginUser: ()->
+                    messageService.log "Call addCustomer of CustomersService"
+
+                    $http.post(
+                            RESOURCE_SOURCE.DOMAIN + RESOURCE_SOURCE.PATHNAME + "../login"
+                            {
+                                username: 'admin'
+                                password:'123456'
+                                submit:'Login'
+                            }
+                            {
+                                headers:
+                                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                                transformRequest: (obj)->
+                                    str = []
+                                    for p of obj
+                                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]))
+                                    str.join("&")
+                                withCredentials: true
+                            }
+                    )
+                    .success(
+                        (data, status, header, config) ->
+                            httpServiceResponseHandler.securityHandler(data, status, header, config)
+                    )
+                    .error(
+                        (data, status, header, config) ->
+                            httpServiceResponseHandler.errorHandler(data, status, header, config)
+                    )
+        ])

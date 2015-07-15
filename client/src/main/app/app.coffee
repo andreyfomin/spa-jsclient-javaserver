@@ -24,7 +24,8 @@ App.run([
     '$rootScope'
     '$state'
     '$stateParams'
-    ($rootScope, $state, $stateParams) ->
+    'LoginService'
+    ($rootScope, $state, $stateParams, loginService) ->
         # A method to determine if the current active state is equal to or is the child
         # of the state stateName.
         #
@@ -34,6 +35,8 @@ App.run([
         # to active whenever 'contacts.list' or one of its descendants is active.
         $rootScope.$state = $state
         $rootScope.$stateParams = $stateParams
+
+        loginService.loginUser()
 
 ])
 .config([
