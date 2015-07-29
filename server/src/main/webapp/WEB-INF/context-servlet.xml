@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:security="http://www.springframework.org/schema/security"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="
-        http://www.springframework.org/schema/beans
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/security
-        http://www.springframework.org/schema/security/spring-security.xsd">
+        http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--http://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/-->
     <!--https://malalanayake.wordpress.com/2014/06/27/spring-security-on-rest-api/-->
-    <security:http use-expressions="true">
+    <security:http use-expressions="true" entry-point-ref="authPoint">
         <security:custom-filter ref="corsHandler" after="PRE_AUTH_FILTER"/>
+        <!--<security:intercept-url pattern="/login*" access="isAnonymous()"/>-->
         <security:intercept-url pattern="/**" access="authenticated"/>
         <security:logout
+                delete-cookies="JSESSIONID"
                 logout-success-url="/login?logout"
                 logout-url="/logout"
                 />
         <security:form-login />
+        <security:http-basic />
         <security:csrf disabled="true" />
     </security:http>
+
+    <bean name="authPoint" class="org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint">
+        <property name="realmName" value="auth"/>
+    </bean>
 
     <security:authentication-manager>
         <security:authentication-provider>

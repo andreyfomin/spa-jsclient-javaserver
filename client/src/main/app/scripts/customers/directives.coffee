@@ -4,7 +4,7 @@
 
 # register the module with Angular
 angular.module('app.customers.directives', [
-    # require the 'app.service' module
+# require the 'app.service' module
     'app.services'
 ])
 
@@ -26,7 +26,7 @@ angular.module('app.customers.directives', [
                         }
                     ]
 
-                $scope.customersTable =  $($elem).DataTable(options)
+                $scope.customersTable = $($elem).DataTable(options)
 
                 # watch for any changes to our data, rebuild the DataTable
                 $scope.$watch attrs.provider, (value) ->
@@ -39,7 +39,10 @@ angular.module('app.customers.directives', [
                         $scope.customersTable.draw()
 
     ])
-
+# As an object, ajaxDT maps directly onto the jQuery ajax configuration object,
+# so any options you can use in a jQuery request
+# https://www.datatables.net/manual/server-side
+# https://api.jquery.com/jQuery.ajax/
 .directive('customersGridServerSideProc', [
         'MessageService'
         'CustomerService'
@@ -52,6 +55,8 @@ angular.module('app.customers.directives', [
                         url: customerService.getAjaxURLTblServerProc()
                         type: 'POST'
                         contentType: "application/json"
+                        xhrFields:
+                            withCredentials: true
                         data: (data) ->
                             JSON.stringify(data)
                         dataSrc: (json)->
@@ -73,16 +78,5 @@ angular.module('app.customers.directives', [
                         }
                     ]
 
-                $scope.customersSrvSideTable =  $($elem).DataTable(options)
-
-                # watch for any changes to our data, rebuild the DataTable
-#                $scope.$watch attrs.provider, (value) ->
-#                    messageService.log "Watch customers list!"
-#                    messageService.log value
-#                    messageService.log attrs
-#                    if value
-#                        $scope.customersTable.clear()
-#                        $scope.customersTable.rows.add(value)
-#                        $scope.customersTable.draw()
-
+                $scope.customersSrvSideTable = $($elem).DataTable(options)
     ])

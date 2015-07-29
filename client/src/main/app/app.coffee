@@ -15,8 +15,8 @@ App = angular.module('app', [
 .constant(
     'RESOURCE_SOURCE'
     APP_ID: if querystring.parse(window.location.search.remove(/^[?]/)).appId? then querystring.parse(window.location.search.remove(/^[?]/)).appId else 19
-    LOGIN_USR: if querystring.parse(window.location.search.remove(/^[?]/)).loginUser? then querystring.parse(window.location.search.remove(/^[?]/)).loginUser else ''
-    LOGIN_PWD: if querystring.parse(window.location.search.remove(/^[?]/)).loginUser? then querystring.parse(window.location.search.remove(/^[?]/)).loginUser else ''
+    USR: if querystring.parse(window.location.search.remove(/^[?]/)).usr? then querystring.parse(window.location.search.remove(/^[?]/)).usr else ''
+    PWD: if querystring.parse(window.location.search.remove(/^[?]/)).pwd? then querystring.parse(window.location.search.remove(/^[?]/)).pwd else ''
     DOMAIN: if querystring.parse(window.location.search.remove(/^[?]/)).domain? then querystring.parse(window.location.search.remove(/^[?]/)).domain else window.location.origin
     PATHNAME: if querystring.parse(window.location.search.remove(/^[?]/)).pathname? then querystring.parse(window.location.search.remove(/^[?]/)).pathname else window.location.pathname + '../../rest/')
 
@@ -25,7 +25,8 @@ App.run([
     '$state'
     '$stateParams'
     'LoginService'
-    ($rootScope, $state, $stateParams, loginService) ->
+    'RESOURCE_SOURCE'
+    ($rootScope, $state, $stateParams, loginService, RESOURCE_SOURCE) ->
         # A method to determine if the current active state is equal to or is the child
         # of the state stateName.
         #
@@ -36,7 +37,14 @@ App.run([
         $rootScope.$state = $state
         $rootScope.$stateParams = $stateParams
 
-        loginService.loginUser()
+#        if RESOURCE_SOURCE.USR != '' and RESOURCE_SOURCE.PWD != ''
+#            debugger
+#            loginUser =
+#                username: RESOURCE_SOURCE.USR
+#                password: RESOURCE_SOURCE.PWD
+#                submit:'Login'
+#
+#            loginService.loginUser(loginUser)
 
 ])
 .config([

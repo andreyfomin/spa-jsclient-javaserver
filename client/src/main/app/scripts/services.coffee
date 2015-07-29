@@ -54,16 +54,12 @@ angular.module('app.services', [])
             'HttpServiceResponseHandler'
             ($http, messageService, RESOURCE_SOURCE, httpServiceResponseHandler) ->
 
-                loginUser: ()->
+                loginUser: (loginUser)->
                     messageService.log "Call addCustomer of CustomersService"
 
                     $http.post(
                             RESOURCE_SOURCE.DOMAIN + RESOURCE_SOURCE.PATHNAME + "../login"
-                            {
-                                username: 'admin'
-                                password:'123456'
-                                submit:'Login'
-                            }
+                            loginUser
                             {
                                 headers:
                                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'

@@ -4,9 +4,18 @@
 [http://localhost:8080/spa.web/webjars/spa-client/]
 (http://localhost:8080/spa.web/webjars/spa-client/)
 
+
+[http://localhost:9999/spa.web/webjars/spa-client/]
+(http://localhost:9999/spa.web/webjars/spa-client/)
+
 ## Client request URL (Client debug mode)
 [http://localhost:4444/?domain=http://localhost:8080&pathname=/spa.web/rest/]
 (http://localhost:4444/?domain=http://localhost:8080&pathname=/spa.web/rest/)
+
+
+[http://localhost:4444/?domain=http://localhost:9999&pathname=/spa.web/rest/]
+(http://localhost:4444/?domain=http://localhost:9999&pathname=/spa.web/rest/)
+
 
 ## REST Request GET
 [http://localhost:8080/spa.web/rest/customer/list]

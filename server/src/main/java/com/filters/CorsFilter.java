@@ -12,7 +12,7 @@ import java.io.IOException;
 /**
  * Created by johanna on 10/23/2014.
  */
-@WebFilter(urlPatterns = {"/*"}, description = "CORS Filter")
+@WebFilter(urlPatterns = {"/rest/*"}, description = "CORS Filter")
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsFilter implements Filter {
 

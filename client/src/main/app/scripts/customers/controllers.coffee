@@ -53,3 +53,42 @@ angular.module('app.customers.controllers', [])
                 messageService.log newValue
                 messageService.log oldValue
     ])
+
+
+.controller('CustomerPageController', [
+        '$scope'
+        'CustomerService'
+        'MessageService'
+        ($scope, customerService, messageService) ->
+
+            $scope.customersPage = []
+
+            $scope.customer = {}
+
+            $scope.addNewCustomer = ()->
+                $('#customerDialog').modal('show')
+                return
+
+
+            $scope.updateServerSideCustomer = ()->
+                $scope.customersSrvSideTable.draw()
+                return
+
+            $scope.createCustomer = ()->
+                messageService.log "Create Customer!"
+
+                customerService
+                .addCustomer($scope.customer)
+                .success(
+                    (updatedCustomer, status, headers, config)->
+                        $scope.customersSrvSideTable.draw()
+                        $scope.customer = {}
+                )
+
+            $scope.$watch 'customersPage', (newValue, oldValue) ->
+                messageService.log "Watch customersPage list!"
+                messageService.log $scope.customersPage
+                messageService.log newValue
+                messageService.log oldValue
+    ])
+
