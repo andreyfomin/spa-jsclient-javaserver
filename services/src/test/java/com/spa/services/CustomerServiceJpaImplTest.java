@@ -1,6 +1,7 @@
 package com.spa.services;
 
 import com.spa.jpa.models.Customer;
+import com.spa.jpa.models.EmailAddress;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -9,6 +10,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +25,7 @@ import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/spa-services-config.xml"})
-@Transactional
+//@Transactional
 public class CustomerServiceJpaImplTest {
 
     @Autowired
@@ -42,6 +44,14 @@ public class CustomerServiceJpaImplTest {
     @Test
     public void testInsertCustomer() throws Exception {
 
+    }
+
+    @Test
+    public void testUpdateCustomer() throws Exception {
+        Customer updateCustomer = new Customer("Alon1", "Walker1XXXX");
+//        updateCustomer.setId(1l);
+        updateCustomer.setEmailAddress(new EmailAddress("alon.walker1@mail.ru"));
+        service.insertCustomer(updateCustomer);
     }
 
     @Test

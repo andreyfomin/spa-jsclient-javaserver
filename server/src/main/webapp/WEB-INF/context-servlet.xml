@@ -9,7 +9,8 @@
 
     <!--http://spring.io/blog/2013/07/03/spring-security-java-config-preview-web-security/-->
     <!--https://malalanayake.wordpress.com/2014/06/27/spring-security-on-rest-api/-->
-    <security:http use-expressions="true" entry-point-ref="authPoint">
+    <security:http use-expressions="true">
+    <!--<security:http use-expressions="true" entry-point-ref="authPoint">-->
         <security:custom-filter ref="corsHandler" after="PRE_AUTH_FILTER"/>
         <!--<security:intercept-url pattern="/login*" access="isAnonymous()"/>-->
         <security:intercept-url pattern="/**" access="authenticated"/>
@@ -20,7 +21,7 @@
                 />
         <security:form-login />
         <security:http-basic />
-        <security:csrf disabled="true" />
+        <security:csrf  disabled="true" />
     </security:http>
 
     <bean name="authPoint" class="org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint">

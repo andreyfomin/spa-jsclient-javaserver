@@ -17,6 +17,64 @@
     <name>spa-db</name>
     <description>A simple spring data example.</description>
 
+    <profiles>
+        <profile>
+            <id>profile-windows</id>
+            <activation>
+                <os>
+                    <family>windows</family>
+                </os>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jarsigner-plugin</artifactId>
+                        <version>1.4</version>
+                        <executions>
+                            <execution>
+                                <id>sign</id>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <keystore>${basedir}/src/main/myCert</keystore>
+                            <alias>myAlias</alias>
+                            <storepass>myStorePass</storepass>
+                            <keypass>myKeyPass</keypass>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.2.1</version>
+
+                        <executions>
+                            <execution>
+                                <id>$$$ Generate self-signed certificate for jar</id>
+                                <phase>validate</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                                <configuration>
+                                    <workingDirectory>${basedir}/src/main</workingDirectory>
+                                    <executable>cmd</executable>
+                                    <arguments>
+                                        <argument>/X</argument>
+                                        <argument>/C</argument>
+                                        <argument>keytool -genkey -alias myAlias -keystore myCert -keypass myKeyPass -dname "CN=FileApplet" -storepass myStorePass -validity 1825
+                                        </argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
