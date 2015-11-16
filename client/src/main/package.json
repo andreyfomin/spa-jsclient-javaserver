@@ -1,40 +1,33 @@
 {
-    "author": "Andrey Fomin",
-    "name": "html5",
-    "description": "html5 module",
-    "version": "0.3.0",
-    "scripts": {
-        "start": "node_modules/.bin/brunch watch --server",
-        "test": "node_modules/.bin/karma start test/karma.conf.js"
-    }, "dependencies": {
+  "author": "Andrey Fomin",
+  "name": "html5",
+  "description": "html5 module",
+  "version": "0.3.0",
+  "scripts": {
+    "start": "node_modules/.bin/brunch watch --server",
+    "test": "node_modules/.bin/karma start test/karma.conf.js"
+  },
+  "dependencies": {
     "jade": "*",
     "coffee-script": "*",
-
     "javascript-brunch": "*",
     "coffee-script-brunch": "*",
-
     "brunch": "*",
     "css-brunch": "*",
     "less-brunch": "*",
     "stylus-brunch": "*",
-
     "auto-reload-brunch": "*",
-
     "uglify-js-brunch": "*",
     "clean-css-brunch": "*",
-
     "jade-pages-brunch": "*",
     "jade-angularjs-brunch": "*",
     "dependency-brunch": "*",
-
     "assetsmanager-brunch": "*",
-
     "express": "*",
     "cors": "* ",
-    "sugar":"*",
-    "body-parser":"*",
-
+    "sugar": "*",
+    "body-parser": "*",
     "karma": "*",
     "bower": "*"
-}
+  }
 }
